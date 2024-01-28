@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cda</groupId>
-    <artifactId>annuaire</artifactId>
+    <artifactId>annuaire-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>annuaire</name>
     <description>annuaire</description>
@@ -46,7 +46,6 @@
             <artifactId>spring-boot-starter-data-jdbc</artifactId>
         </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
