@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -18,6 +19,11 @@ public class PhoneController {
     @RequestMapping("/{userId}/phones")
     public List<Phone> getPhoneList(@PathVariable Long userId){
         return phoneService.getPhonesByUserId(userId);
+    }
+
+    @RequestMapping("/phone/{id}")
+    public Phone getPhone(@PathVariable Long id){
+        return phoneService.getPhoneById(id);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/phone/{id}")

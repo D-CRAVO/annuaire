@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface PhoneRepository extends ListCrudRepository<Phone, Long> {
     List<Phone> findByUserId(long userId);
+    Phone findById(long id);
 }
