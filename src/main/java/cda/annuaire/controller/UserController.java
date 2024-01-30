@@ -13,26 +13,57 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * Demande la récupération de tous les utilisateurs à l'UserService
+     *
+     * @return La liste des utilisateurs
+     */
     @RequestMapping("/users")
     public List<User> getUsers(){
         return userService.getUsers();
     }
 
+    /**
+     * Demande la récupération d'un utilisateur à l'UserService
+     * d'après son identifiant
+     *
+     * @param id Identifiant de l'utilisateur à récupérer
+     *
+     * @return L'utilisateur
+     */
     @RequestMapping("/user/{id}")
     public User getUser(@PathVariable long id){
         return userService.getUser(id);
     }
 
+    /**
+     * Demande la suppression d'un utilisateur à l'UserService
+     * d'après son identifiant
+     *
+     * @param id Identifiant de l'utilisateur à supprimer
+     */
     @RequestMapping(method = RequestMethod.DELETE, value = "/user/{id}")
     public void deleteUser(@PathVariable long id){
         userService.deleteUser(id);
     }
 
+    /**
+     * Demande l'ajout d'un utilisateur à l'UserService
+     *
+     * @param user Utilisateur à ajouter
+     */
     @RequestMapping(method = RequestMethod.POST, value = "/users")
     public void addUser(@RequestBody User user){
         userService.addUser(user);
     }
 
+    /**
+     * Demande la mise à jour d'un utilisateur à l'UserService
+     * d'après son identifiant
+     *
+     * @param user Utilisateur à mettre à jour
+     * @param id Identifiant de l'utilisateur à modifier
+     */
     @RequestMapping(method = RequestMethod.PUT, value = "/user/{id}")
     public void updateUser(@RequestBody User user, @PathVariable long id){
         userService.updateUser(user, id);

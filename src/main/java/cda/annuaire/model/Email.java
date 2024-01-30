@@ -10,25 +10,25 @@ import lombok.Setter;
 @Entity
 public class Email {
     /**
-     * Identifiant de l'Email
+     * Identifiant de l'email
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     /**
-     * Adresse de l'Email
+     * Adresse de l'email
      */
     private String address;
 
     /**
-     * Type de l'Email
+     * Type de l'email (personnel, professionel, etc.)
      */
     @Enumerated(EnumType.STRING)
     private Type type;
 
     /**
-     * Propriétaire de l'Email
+     * Utilisateur auquel l'email est lié
      */
     @ManyToOne
     private User user;
