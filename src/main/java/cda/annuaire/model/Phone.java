@@ -22,6 +22,7 @@ public class Phone {
     /**
      * Numéro de téléphone
      */
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String number;
 
     /**
@@ -33,6 +34,7 @@ public class Phone {
     /**
      * Utilisateur auquel le téléphone est lié
      */
+    @JoinColumn(columnDefinition = "BIGINT")
     @ManyToOne
     private User user;
 }

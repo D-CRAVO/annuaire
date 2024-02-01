@@ -4,10 +4,12 @@ import cda.annuaire.model.enums.Type;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 @Getter
 @Setter
 @Entity
+@Component
 public class Email {
     /**
      * Identifiant de l'email
@@ -19,6 +21,7 @@ public class Email {
     /**
      * Adresse de l'email
      */
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String address;
 
     /**
@@ -30,6 +33,7 @@ public class Email {
     /**
      * Utilisateur auquel l'email est lié
      */
+    @JoinColumn(columnDefinition = "BIGINT")
     @ManyToOne
     private User user;
 }

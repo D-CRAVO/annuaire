@@ -23,26 +23,31 @@ public class User {
     /**
      * Prénom de l'utilisateur
      */
+    @Column(columnDefinition = "TEXT")
     private String firstname;
 
     /**
      * Nom de famille de l'utilisateur
      */
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String lastname;
 
     /**
      * Adresse de l'utilisateur
      */
+    @Column(columnDefinition = "TEXT")
     private String address;
 
     /**
      * Code postal de l'utilisateur
      */
+    @Column(columnDefinition = "TEXT")
     private String zipCode;
 
     /**
      * Ville de l'utilisateur
      *
      */
+    @JoinColumn(columnDefinition = "TEXT")
     private String city;
 }
