@@ -35,8 +35,8 @@ public class PhoneController {
      *
      * @return Le téléphone
      */
-    @RequestMapping("/phone/{id}")
-    public Phone getPhone(@PathVariable Long id){
+    @RequestMapping("/phones/{id}")
+    public Phone getPhoneById(@PathVariable Long id){
         return phoneService.getPhoneById(id);
     }
 

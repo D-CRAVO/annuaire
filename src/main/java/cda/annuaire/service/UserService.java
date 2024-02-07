@@ -1,5 +1,6 @@
 package cda.annuaire.service;
 
+import cda.annuaire.dto.user.UserDTO;
 import cda.annuaire.model.User;
 import cda.annuaire.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,8 @@ public class UserService {
      *
      * @return Tous les utilisateurs
      */
-    public List<User> getUsers(){
-        List<User> users = new ArrayList<>();
+    public List<UserDTO> getUsers(){
+        List<UserDTO> users = new ArrayList<>();
         userRepository.findAll().forEach(user -> {users.add(user);});
         return users;
     }
@@ -33,7 +34,7 @@ public class UserService {
      *
      * @return Un utilisateur
      */
-    public User getUser(long id) {
+    public UserDTO getUser(long id) {
         return userRepository.findById(id).orElse(null);
     }
 
@@ -42,7 +43,7 @@ public class UserService {
      *
      * @param user Utilisateur à ajouter
      */
-    public void addUser(User user){
+    public void addUser(UserDTO user){
         userRepository.save(user);
     }
 
@@ -63,7 +64,7 @@ public class UserService {
      * @param user Utilisateur à mettre à jour
      * @param id Identifiant de l'utilisateur à mettre à jour
      */
-    public void updateUser(User user, long id){
+    public void updateUser(UserDTO user, long id){
         userRepository.save(user);
     }
 }
