@@ -4,7 +4,6 @@ import cda.annuaire.dto.user.UserDTO;
 import cda.annuaire.model.User;
 
 import java.util.List;
-
 public interface UserMapper {
 
     UserDTO map(User user);
