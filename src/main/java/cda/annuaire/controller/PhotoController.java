@@ -1,5 +1,6 @@
 package cda.annuaire.controller;
 
+import cda.annuaire.dto.photo.PhotoDTO;
 import cda.annuaire.model.Photo;
 import cda.annuaire.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class PhotoController {
     PhotoService photoService;
 
     @RequestMapping("/{userId}/photo")
-    public Photo getPhotoByUserId(@PathVariable long userId){
+    public PhotoDTO getPhotoByUserId(@PathVariable long userId){
         return photoService.getPhotoByUserId(userId);
     }
 
@@ -23,7 +24,7 @@ public class PhotoController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/photo")
-    public void updatePhoto(Photo photo){
-        photoService.updatePhoto(photo);
+    public void updatePhoto(PhotoDTO photoDTO){
+        photoService.updatePhoto(photoDTO);
     }
 }
