@@ -1,6 +1,7 @@
 package cda.annuaire.service;
 
 import cda.annuaire.dto.user.UserDTO;
+import cda.annuaire.mapper.UserMapper;
 import cda.annuaire.model.User;
 import cda.annuaire.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,8 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
+    private UserMapper userMapper;
 
     /**
      * Récupère tous les utilisateur dans la base de données
@@ -21,9 +23,9 @@ public class UserService {
      * @return Tous les utilisateurs
      */
     public List<UserDTO> getUsers(){
-        List<UserDTO> users = new ArrayList<>();
+        List<User> users = new ArrayList<>();
         userRepository.findAll().forEach(user -> {users.add(user);});
-        return users;
+        return userMapper.map(users);
     }
 
     /**
@@ -35,16 +37,16 @@ public class UserService {
      * @return Un utilisateur
      */
     public UserDTO getUser(long id) {
-        return userRepository.findById(id).orElse(null);
+        return userMapper.map(userRepository.findById(id).orElse(null));
     }
 
     /**
      * Ajoute un utilisateur dans la base de données
      *
-     * @param user Utilisateur à ajouter
+     * @param userDTO Utilisateur à ajouter
      */
-    public void addUser(UserDTO user){
-        userRepository.save(user);
+    public void addUser(UserDTO userDTO){
+        userRepository.save(userMapper.update(userDTO));
     }
 
     /**
@@ -61,10 +63,10 @@ public class UserService {
      * Met à jour un utilisateur dans la base de données
      * d'après son identifiant
      *
-     * @param user Utilisateur à mettre à jour
+     * @param userDTO Utilisateur à mettre à jour
      * @param id Identifiant de l'utilisateur à mettre à jour
      */
-    public void updateUser(UserDTO user, long id){
-        userRepository.save(user);
+    public void updateUser(UserDTO userDTO, long id){
+        userRepository.save(userMapper.update(userDTO));
     }
 }
