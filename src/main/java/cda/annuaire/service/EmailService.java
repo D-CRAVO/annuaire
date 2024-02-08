@@ -1,6 +1,7 @@
 package cda.annuaire.service;
 
-import cda.annuaire.model.Email;
+import cda.annuaire.dto.email.EmailDTO;
+import cda.annuaire.mapper.EmailMapper;
 import cda.annuaire.repository.EmailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,8 @@ import java.util.List;
 public class EmailService {
 
     @Autowired
-    EmailRepository emailRepository;
+    private EmailRepository emailRepository;
+    private EmailMapper emailMapper;
 
     /**
      * Récupère la liste des Email de l'utilisateur
@@ -20,17 +22,17 @@ public class EmailService {
      *
      * @return Liste d'Email de l'utilisateur
      */
-    public List<Email> getEmailByUserId(long userId){
-        return emailRepository.findEmailByUserId(userId);
+    public List<EmailDTO> getEmailByUserId(long userId){
+        return emailMapper.map(emailRepository.findEmailByUserId(userId));
     }
 
     /**
      * Ajoute un Email à la liste des Email
      *
-     * @param email Email à ajouter
+     * @param emailDTO Email à ajouter
      */
-    public void addEmail(Email email){
-        emailRepository.save(email);
+    public void addEmail(EmailDTO emailDTO){
+        emailRepository.save(emailMapper.update(emailDTO));
     }
 
     /**
@@ -45,10 +47,10 @@ public class EmailService {
     /**
      * Met à jour l'Email d'après son identifiant
      *
-     * @param email Email à modifier
+     * @param emailDTO Email à modifier
      * @param id Identifiant de l'Email
      */
-    public void updateEmail(Email email, long id){
-        emailRepository.save(email);
+    public void updateEmail(EmailDTO emailDTO, long id){
+        emailRepository.save(emailMapper.update(emailDTO));
     }
 }

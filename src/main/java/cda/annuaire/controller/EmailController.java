@@ -1,5 +1,6 @@
 package cda.annuaire.controller;
 
+import cda.annuaire.dto.email.EmailDTO;
 import cda.annuaire.model.Email;
 import cda.annuaire.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class EmailController {
      * @return La liste des emails de l'utilisateur
      */
     @RequestMapping("/{userId}/emails")
-    public List<Email> getEmailList(@PathVariable long userId){
+    public List<EmailDTO> getEmailList(@PathVariable long userId){
         return emailService.getEmailByUserId(userId);
     }
 
@@ -41,22 +42,22 @@ public class EmailController {
     /**
      * Demande l'ajout d'un email à l'EmailService
      *
-     * @param email Email à ajouter
+     * @param emailDTO Email à ajouter
      */
     @RequestMapping(method = RequestMethod.POST, value = "/emails")
-    public void addEmail(@RequestBody Email email){
-        emailService.addEmail(email);
+    public void addEmail(@RequestBody EmailDTO emailDTO){
+        emailService.addEmail(emailDTO);
     }
 
     /**
      * Demande la mise à jour de l'email à l'EmailService
      * d'après son identifiant
      *
-     * @param email Email à mettre à jour
+     * @param emailDTO Email à mettre à jour
      * @param id Identifiant de l'email
      */
     @RequestMapping(method = RequestMethod.PUT, value = "/email/{id}")
-    public void updateEmail(@RequestBody Email email, @PathVariable long id){
-        emailService.updateEmail(email, id);
+    public void updateEmail(@RequestBody EmailDTO emailDTO, @PathVariable long id){
+        emailService.updateEmail(emailDTO, id);
     }
 }
