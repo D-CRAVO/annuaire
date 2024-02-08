@@ -1,5 +1,7 @@
 package cda.annuaire.controller;
 
+import cda.annuaire.dto.phone.PhoneDTO;
+import cda.annuaire.mapper.PhoneMapper;
 import cda.annuaire.model.Phone;
 import cda.annuaire.service.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ public class PhoneController {
      * @return La liste des téléphone de l'utilisateur
      */
     @RequestMapping("/{userId}/phones")
-    public List<Phone> getPhoneList(@PathVariable Long userId){
+    public List<PhoneDTO> getPhoneList(@PathVariable Long userId){
         return phoneService.getPhonesByUserId(userId);
     }
 
@@ -36,7 +38,7 @@ public class PhoneController {
      * @return Le téléphone
      */
     @RequestMapping("/phones/{id}")
-    public Phone getPhoneById(@PathVariable Long id){
+    public PhoneDTO getPhoneById(@PathVariable Long id){
         return phoneService.getPhoneById(id);
     }
 
@@ -54,22 +56,22 @@ public class PhoneController {
     /**
      * Demande l'ajout d'un téléphone au PhoneService
      *
-     * @param phone Téléphone à ajouter
+     * @param phoneDTO Téléphone à ajouter
      */
     @RequestMapping(method = RequestMethod.POST, value = "/phones")
-    public void addPhone(@RequestBody Phone phone){
-        phoneService.addPhone(phone);
+    public void addPhone(@RequestBody PhoneDTO phoneDTO){
+        phoneService.addPhone(phoneDTO);
     }
 
     /**
      * Demande la mise à jour d'un téléphone au PhoneService
      * d'après son identifiant
      *
-     * @param phone Téléphone à modifier
+     * @param phoneDTO Téléphone à modifier
      * @param id Identifiant du téléphone à modifier
      */
-    @RequestMapping(method = RequestMethod.PUT, value = "/phone/{id}")
-    public void updatePhone(@RequestBody Phone phone, @PathVariable long id){
-        phoneService.updatePhone(phone, id);
+    @RequestMapping(method = RequestMethod.PUT, value = "/phone")
+    public void updatePhone(@RequestBody PhoneDTO phoneDTO){
+        phoneService.updatePhone(phoneDTO);
     }
 }
