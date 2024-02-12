@@ -2,9 +2,12 @@ package cda.annuaire.mapper;
 
 import cda.annuaire.dto.phone.PhoneDTO;
 import cda.annuaire.model.Phone;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import java.util.List;
 
+@Mapper
 public interface PhoneMapper {
 
     /**
@@ -30,4 +33,12 @@ public interface PhoneMapper {
      * @return Un Phone
      */
     Phone update(PhoneDTO phoneDTO);
+
+    /**
+     * Convertit une liste de Phone en liste de PhoneDTO
+     *
+     * @param phoneDTOs Liste de Phone à convertir
+     * @return Une liste de PhoneDTO
+     */
+    List<Phone> update(List<PhoneDTO> phoneDTOs);
 }

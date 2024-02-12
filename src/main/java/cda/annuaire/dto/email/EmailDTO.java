@@ -1,12 +1,18 @@
 package cda.annuaire.dto.email;
 
+import cda.annuaire.model.User;
 import cda.annuaire.model.enums.Type;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter
+import java.util.Optional;
+
 @Getter
+@Setter
 @AllArgsConstructor
 public class EmailDTO {
 
@@ -16,12 +22,18 @@ public class EmailDTO {
     private long id;
 
     /**
-     * Adresse de l'email
+     * Addresse de l'email
      */
     private String address;
 
     /**
-     * Type de l'email (personal, professional, etc.)
+     * Type de l'email (personnel, professionel, etc.)
      */
+    @Enumerated(EnumType.STRING)
     private Type type;
+
+    /**
+     * Utilisateur avec lequel l'email est lié
+     */
+    private User user;
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class PhotoController {
 
     @Autowired
-    PhotoService photoService;
+    private PhotoService photoService;
 
     /**
      * Demande la récupération de la photo auprès du PhotoService

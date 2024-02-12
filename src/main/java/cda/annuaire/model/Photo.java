@@ -22,9 +22,8 @@ public class Photo {
     /**
      * Fichier de l'image
      */
-    @Lob //LOB or Large OBject refers to a variable-length datatype for storing large objects.
-    @Column(columnDefinition = "BYTEA", nullable = false)
-    private byte[] file;
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String file;
 
     /**
      * Utilisateur auquel la photo est liée

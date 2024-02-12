@@ -1,8 +1,6 @@
 package cda.annuaire.controller;
 
 import cda.annuaire.dto.phone.PhoneDTO;
-import cda.annuaire.mapper.PhoneMapper;
-import cda.annuaire.model.Phone;
 import cda.annuaire.service.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +12,7 @@ import java.util.List;
 public class PhoneController {
 
     @Autowired
-    PhoneService phoneService;
+    private PhoneService phoneService;
 
     /**
      * Demande la récupération des téléphones d'un utilisateur au PhoneService
@@ -37,9 +35,19 @@ public class PhoneController {
      *
      * @return Le téléphone
      */
-    @RequestMapping("/phones/{id}")
+    @RequestMapping("/phone/{id}")
     public PhoneDTO getPhoneById(@PathVariable Long id){
         return phoneService.getPhoneById(id);
+    }
+
+    /**
+     * Demande la récupération de tous les téléphones au PhoneService
+     *
+     * @return La liste des téléphones
+     */
+    @RequestMapping("/phones")
+    public List<PhoneDTO> getAllPhones(){
+        return phoneService.getAllPhones();
     }
 
     /**
@@ -68,7 +76,6 @@ public class PhoneController {
      * d'après son identifiant
      *
      * @param phoneDTO Téléphone à modifier
-     * @param id Identifiant du téléphone à modifier
      */
     @RequestMapping(method = RequestMethod.PUT, value = "/phone")
     public void updatePhone(@RequestBody PhoneDTO phoneDTO){

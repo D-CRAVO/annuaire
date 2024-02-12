@@ -34,7 +34,7 @@ public class Phone {
     /**
      * Utilisateur auquel le téléphone est lié
      */
-    @JoinColumn(columnDefinition = "BIGINT")
-    @ManyToOne
+    @JoinColumn(columnDefinition = "BIGINT", name = "user_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 }

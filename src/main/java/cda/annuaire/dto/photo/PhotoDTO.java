@@ -1,5 +1,7 @@
 package cda.annuaire.dto.photo;
 
+import cda.annuaire.model.User;
+
 public class PhotoDTO {
 
     /**
@@ -10,5 +12,10 @@ public class PhotoDTO {
     /**
      * Fichier de la photo
      */
-    private byte[] file;
+    private String file;
+
+    /**
+     * Utilisateur auquel la photo est liée
+     */
+    private User user;
 }

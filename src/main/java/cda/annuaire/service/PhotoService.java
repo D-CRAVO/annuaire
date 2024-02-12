@@ -4,6 +4,7 @@ import cda.annuaire.dto.photo.PhotoDTO;
 import cda.annuaire.mapper.PhotoMapper;
 import cda.annuaire.model.Photo;
 import cda.annuaire.repository.PhotoRepository;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +12,9 @@ import org.springframework.stereotype.Service;
 public class PhotoService {
 
     @Autowired
-    PhotoRepository photoRepository;
-    @Autowired
-    PhotoMapper photoMapper;
+    private PhotoRepository photoRepository;
+
+    private final PhotoMapper photoMapper = (PhotoMapper) Mappers.getMapper(PhotoMapper.class);
 
     /**
      * Demande la récupération de la photo auprès du PhotoService

@@ -2,8 +2,10 @@ package cda.annuaire.mapper;
 
 import cda.annuaire.dto.user.UserDTO;
 import cda.annuaire.model.User;
-
+import org.mapstruct.Mapper;
 import java.util.List;
+
+@Mapper
 public interface UserMapper {
 
     /**

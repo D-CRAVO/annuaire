@@ -1,13 +1,16 @@
 package cda.annuaire.service;
 
 import cda.annuaire.dto.phone.PhoneDTO;
+import cda.annuaire.dto.user.UserDTO;
 import cda.annuaire.mapper.PhoneMapper;
 import cda.annuaire.model.Phone;
 import cda.annuaire.model.User;
 import cda.annuaire.repository.PhoneRepository;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,10 +18,12 @@ import java.util.Optional;
 public class PhoneService {
 
     @Autowired
-    PhoneRepository phoneRepository;
+    private PhoneRepository phoneRepository;
+
+    private final PhoneMapper phoneMapper = (PhoneMapper) Mappers.getMapper(PhoneMapper.class);
 
     @Autowired
-    PhoneMapper phoneMapper;
+    private UserService userService;
 
     /**
      * Demande au PhoneRepository de retourner une liste de téléphone
@@ -67,5 +72,19 @@ public class PhoneService {
      * @return Le téléphone à retourner
      */
     public PhoneDTO getPhoneById(long id) { return phoneMapper.map(phoneRepository.findById(id));
+    }
+
+    /**
+     * Récupère tous les téléphones
+     *
+     * @return La liste des téléphones
+     */
+    public List<PhoneDTO> getAllPhones() {
+        List<UserDTO> userDTOs = userService.getUsers();
+        List<PhoneDTO> phoneDTOs = new ArrayList<PhoneDTO>();
+        for(UserDTO user : userDTOs){
+            phoneDTOs.add(this.getPhoneById(user.getId()));
+        }
+        return phoneDTOs;
     }
 }

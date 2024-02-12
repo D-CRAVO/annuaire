@@ -1,19 +1,19 @@
 package cda.annuaire.controller;
 
 import cda.annuaire.dto.email.EmailDTO;
-import cda.annuaire.model.Email;
 import cda.annuaire.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
 public class EmailController {
 
     @Autowired
-    EmailService emailService;
+    private EmailService emailService;
 
     /**
      * Demande la récupération des emails de l'utilisateur à l'EmailService
@@ -26,6 +26,23 @@ public class EmailController {
     @RequestMapping("/{userId}/emails")
     public List<EmailDTO> getEmailList(@PathVariable long userId){
         return emailService.getEmailByUserId(userId);
+    }
+
+    /**
+     * Demande la récupération d'un email à l'EmailService
+     * d'après son identifiant
+     *
+     * @param id Identifiant de l'email
+     * @return L'email
+     */
+    @RequestMapping("/email/{id}")
+    public EmailDTO getEmailById(@PathVariable long id){
+        return emailService.getEmailById(id);
+    }
+
+    @RequestMapping("/emails")
+    public List<EmailDTO> getAllEmails(){
+        return emailService.getAllEmails();
     }
 
     /**

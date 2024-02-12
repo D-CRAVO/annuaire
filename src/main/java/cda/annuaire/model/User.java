@@ -6,6 +6,8 @@ import lombok.Setter;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -48,6 +50,15 @@ public class User {
      * Ville de l'utilisateur
      *
      */
-    @JoinColumn(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT")
     private String city;
+
+    @OneToMany//(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Phone> phones;
+
+    @OneToMany//(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Email> emails;
+
+    @OneToOne
+    private Photo photo;
 }

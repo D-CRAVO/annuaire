@@ -5,6 +5,7 @@ import cda.annuaire.mapper.UserMapper;
 import cda.annuaire.model.User;
 import cda.annuaire.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -69,5 +70,22 @@ public class UserController {
     @RequestMapping(method = RequestMethod.PUT, value = "/user/{id}")
     public void updateUser(@RequestBody UserDTO userDTO, @PathVariable long id){
         userService.updateUser(userDTO, id);
+    }
+
+    /**
+     * Demande la récupération d'une liste d'utilisateurs auprès de l'UserService
+     * d'après un texte de recherche
+     *
+     * @param search Texte de recherche
+     * @return La liste des utilisateurs
+     */
+    @RequestMapping(method = RequestMethod.GET, value="/{search}")
+    public ResponseEntity<List<UserDTO>> searchUsers(@PathVariable String search){
+        return ResponseEntity.ok(userService.searchUsers(search));
+    }
+
+    @RequestMapping("/users2")
+    public List<User> findAllUsersWithPhonesAndEmails(){
+        return userService.findAllUsersWithPhonesAndEmails();
     }
 }

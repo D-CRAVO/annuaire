@@ -4,6 +4,7 @@ import cda.annuaire.dto.user.UserDTO;
 import cda.annuaire.mapper.UserMapper;
 import cda.annuaire.model.User;
 import cda.annuaire.repository.UserRepository;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,8 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private UserMapper userMapper;
+
+    private final UserMapper userMapper = (UserMapper) Mappers.getMapper(UserMapper.class);
 
     /**
      * Récupère tous les utilisateur dans la base de données
@@ -24,9 +25,7 @@ public class UserService {
      * @return Tous les utilisateurs
      */
     public List<UserDTO> getUsers(){
-        List<User> users = new ArrayList<>();
-        userRepository.findAll().forEach(user -> {users.add(user);});
-        return userMapper.map(users);
+        return userMapper.map(userRepository.findAll());
     }
 
     /**
@@ -69,5 +68,20 @@ public class UserService {
      */
     public void updateUser(UserDTO userDTO, long id){
         userRepository.save(userMapper.update(userDTO));
+    }
+
+    /**
+     * Demande au UserRepository de rechercher les utilisateurs
+     * suivant un texte de recherche
+     *
+     * @param search Texte de recherche
+     * @return La liste des utilisateurs
+     */
+    public List<UserDTO> searchUsers(String search) {
+        return userMapper.map(userRepository.findByFirstnameContainsOrLastnameContains(search, search));
+    }
+
+    public List<User> findAllUsersWithPhonesAndEmails(){
+        return userRepository.findAll();
     }
 }

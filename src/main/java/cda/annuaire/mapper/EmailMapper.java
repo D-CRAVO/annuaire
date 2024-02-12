@@ -2,9 +2,13 @@ package cda.annuaire.mapper;
 
 import cda.annuaire.dto.email.EmailDTO;
 import cda.annuaire.model.Email;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import java.util.List;
+import java.util.Optional;
+
+@Mapper
 public interface EmailMapper {
 
     /**
@@ -29,7 +33,7 @@ public interface EmailMapper {
      * @param emailDTO EmailDTO à partir duquel la mise à jour est faite
      * @return L'email mis à jour
      */
-    Email update(EmailDTO  emailDTO);
+    Email update(EmailDTO emailDTO);
 
     /**
      * Met à jour la liste d'email à partir de la liste d'emailDTO
