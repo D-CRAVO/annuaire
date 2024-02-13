@@ -1,0 +1,6 @@
+CREATE TABLE phone(
+id BIGSERIAL PRIMARY KEY,
+number TEXT NOT NULL,
+type TEXT,
+user_id BIGINT REFERENCES a_user(id)
+)

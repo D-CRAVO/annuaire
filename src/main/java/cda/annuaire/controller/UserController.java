@@ -1,7 +1,6 @@
 package cda.annuaire.controller;
 
 import cda.annuaire.dto.user.UserDTO;
-import cda.annuaire.mapper.UserMapper;
 import cda.annuaire.model.User;
 import cda.annuaire.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,8 +67,8 @@ public class UserController {
      * @param id Identifiant de l'utilisateur à modifier
      */
     @RequestMapping(method = RequestMethod.PUT, value = "/user/{id}")
-    public void updateUser(@RequestBody UserDTO userDTO, @PathVariable long id){
-        userService.updateUser(userDTO, id);
+    public void updateUser(@RequestBody UserDTO userDTO){
+        userService.updateUser(userDTO);
     }
 
     /**

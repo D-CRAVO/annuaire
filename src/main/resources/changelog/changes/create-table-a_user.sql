@@ -4,6 +4,5 @@ CREATE TABLE a_user(
     lastname TEXT NOT NULL,
     address TEXT,
     zip_code TEXT,
-    city TEXT,
-    photo_id BIGINT REFERENCES photo(id)
+    city TEXT
 );

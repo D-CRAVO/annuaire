@@ -1,15 +1,11 @@
 package cda.annuaire.dto.user;
 
-import cda.annuaire.dto.email.EmailDTO;
-import cda.annuaire.dto.phone.PhoneDTO;
-import cda.annuaire.dto.photo.PhotoDTO;
 import cda.annuaire.model.Email;
 import cda.annuaire.model.Phone;
 import cda.annuaire.model.Photo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -48,9 +44,18 @@ public class UserDTO {
      */
     private String city;
 
+    /**
+     * Liste des téléphones de l'utilisateur
+     */
     private List<Phone> phones;
 
+    /**
+     * Liste des emails de l'utilisateur
+     */
     private List<Email> emails;
 
+    /**
+     * Photo de l'utilisateur
+     */
     private Photo photo;
 }

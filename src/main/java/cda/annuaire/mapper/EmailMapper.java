@@ -3,10 +3,8 @@ package cda.annuaire.mapper;
 import cda.annuaire.dto.email.EmailDTO;
 import cda.annuaire.model.Email;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 import java.util.List;
-import java.util.Optional;
 
 @Mapper
 public interface EmailMapper {

@@ -20,7 +20,8 @@ public class UserService {
     private final UserMapper userMapper = (UserMapper) Mappers.getMapper(UserMapper.class);
 
     /**
-     * Récupère tous les utilisateur dans la base de données
+     * Demande la récupération de tous les utilisateurs au UserRepository
+     * et le converti ensuite en liste de UserDTO
      *
      * @return Tous les utilisateurs
      */
@@ -29,8 +30,9 @@ public class UserService {
     }
 
     /**
-     * Récupère un utilisateur dans la base de données
+     * Demande la récupération d'un utilisateur au UserRepository
      * d'après son identifiant
+     * et le converti en UserDTO
      *
      * @param id Identifiant de l'utilisateur
      *
@@ -41,7 +43,8 @@ public class UserService {
     }
 
     /**
-     * Ajoute un utilisateur dans la base de données
+     * Demande l'ajout d'un utilisateur au UserRepository
+     * Après avoir converti le userDTO
      *
      * @param userDTO Utilisateur à ajouter
      */
@@ -50,7 +53,7 @@ public class UserService {
     }
 
     /**
-     * Supprime un utilisateur dans la base de données
+     * Demande la suppression d'un utilisateur au UserRepository
      * d'après son identifiant
      *
      * @param id Identifiant de l'utilisateur
@@ -60,13 +63,13 @@ public class UserService {
     }
 
     /**
-     * Met à jour un utilisateur dans la base de données
+     * Demande la mise à jour de l'utilisateur au UserRepository
      * d'après son identifiant
+     * et après avoir converti le userDTO
      *
      * @param userDTO Utilisateur à mettre à jour
-     * @param id Identifiant de l'utilisateur à mettre à jour
      */
-    public void updateUser(UserDTO userDTO, long id){
+    public void updateUser(UserDTO userDTO){
         userRepository.save(userMapper.update(userDTO));
     }
 
@@ -79,9 +82,5 @@ public class UserService {
      */
     public List<UserDTO> searchUsers(String search) {
         return userMapper.map(userRepository.findByFirstnameContainsOrLastnameContains(search, search));
-    }
-
-    public List<User> findAllUsersWithPhonesAndEmails(){
-        return userRepository.findAll();
     }
 }

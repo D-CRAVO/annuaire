@@ -28,9 +28,4 @@ public class PhoneDTO {
      */
     @Enumerated(EnumType.STRING)
     private Type type;
-
-    /**
-     * Utilisateur avec lequel le téléphone est lié
-     */
-    private User user;
 }

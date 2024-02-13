@@ -3,7 +3,6 @@ package cda.annuaire.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -53,12 +52,21 @@ public class User {
     @Column(columnDefinition = "TEXT")
     private String city;
 
+    /**
+     * Liste des téléphones associés à l'utilisateur
+     */
     @OneToMany//(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Phone> phones;
 
+    /**
+     * Liste des emails associés à l'utilisateur
+     */
     @OneToMany//(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Email> emails;
 
+    /**
+     * Photo de l'utilisateur
+     */
     @OneToOne
     private Photo photo;
 }
