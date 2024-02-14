@@ -55,13 +55,13 @@ public class User {
     /**
      * Liste des téléphones associés à l'utilisateur
      */
-    @OneToMany//(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Phone> phones;
 
     /**
      * Liste des emails associés à l'utilisateur
      */
-    @OneToMany//(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Email> emails;
 
     /**

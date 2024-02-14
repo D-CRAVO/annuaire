@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class UserController {
 
@@ -64,7 +65,6 @@ public class UserController {
      * d'après son identifiant
      *
      * @param userDTO Utilisateur à mettre à jour
-     * @param id Identifiant de l'utilisateur à modifier
      */
     @RequestMapping(method = RequestMethod.PUT, value = "/user/{id}")
     public void updateUser(@RequestBody UserDTO userDTO){
@@ -81,10 +81,5 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET, value="/{search}")
     public ResponseEntity<List<UserDTO>> searchUsers(@PathVariable String search){
         return ResponseEntity.ok(userService.searchUsers(search));
-    }
-
-    @RequestMapping("/users2")
-    public List<User> findAllUsersWithPhonesAndEmails(){
-        return userService.findAllUsersWithPhonesAndEmails();
     }
 }

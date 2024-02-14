@@ -22,8 +22,8 @@ public class Photo {
     /**
      * Fichier de l'image
      */
-    @Column(columnDefinition = "TEXT", nullable = false)
-    private String file;
+    @Column(columnDefinition = "BYTEA", nullable = false)
+    private byte[] file;
 
     /**
      * Utilisateur auquel la photo est liée

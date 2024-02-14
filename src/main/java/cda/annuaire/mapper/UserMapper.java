@@ -5,7 +5,7 @@ import cda.annuaire.model.User;
 import org.mapstruct.Mapper;
 import java.util.List;
 
-@Mapper
+@Mapper(uses = {EmailMapper.class, PhoneMapper.class})
 public interface UserMapper {
 
     /**
