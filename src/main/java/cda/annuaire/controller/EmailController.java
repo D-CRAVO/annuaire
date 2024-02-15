@@ -23,11 +23,12 @@ public class EmailController {
      *
      * @return La liste des emails de l'utilisateur
      */
+    /*
     @RequestMapping("/{userId}/emails")
     public List<EmailDTO> getEmailList(@PathVariable long userId){
         return emailService.getEmailByUserId(userId);
     }
-
+    */
     /**
      * Demande la récupération d'un email à l'EmailService
      * d'après son identifiant
@@ -35,16 +36,18 @@ public class EmailController {
      * @param id Identifiant de l'email
      * @return L'email
      */
+    /*
     @RequestMapping("/email/{id}")
     public EmailDTO getEmailById(@PathVariable long id){
         return emailService.getEmailById(id);
     }
-
+    */
+    /*
     @RequestMapping("/emails")
     public List<EmailDTO> getAllEmails(){
         return emailService.getAllEmails();
     }
-
+    */
     /**
      * Demande la suppression de l'email à l'EmailService
      * d'après son identifiant
@@ -53,7 +56,7 @@ public class EmailController {
      */
     @RequestMapping(method = RequestMethod.DELETE, value = "/email/{id}")
     public void deleteEmail(@PathVariable long id){
-        emailService.deleteEmail(id);
+        //emailService.deleteEmail(id);
     }
 
     /**
@@ -61,11 +64,12 @@ public class EmailController {
      *
      * @param emailDTO Email à ajouter
      */
+    /*
     @RequestMapping(method = RequestMethod.POST, value = "/emails")
     public void addEmail(@RequestBody EmailDTO emailDTO){
         emailService.addEmail(emailDTO);
     }
-
+    */
     /**
      * Demande la mise à jour de l'email à l'EmailService
      * d'après son identifiant
@@ -75,6 +79,6 @@ public class EmailController {
      */
     @RequestMapping(method = RequestMethod.PUT, value = "/email/{id}")
     public void updateEmail(@RequestBody EmailDTO emailDTO, @PathVariable long id){
-        emailService.updateEmail(emailDTO, id);
+        //emailService.updateEmail(emailDTO, id);
     }
 }

@@ -16,7 +16,7 @@ public class Email {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     /**
      * Adresse de l'email
@@ -33,7 +33,7 @@ public class Email {
     /**
      * Utilisateur auquel l'email est lié
      */
-    @JoinColumn(columnDefinition = "BIGINT", name = "user_id", nullable = false)
+    //@JoinColumn(columnDefinition = "BIGINT", name = "user_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 }

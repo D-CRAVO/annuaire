@@ -2,6 +2,8 @@ package cda.annuaire.mapper;
 
 import cda.annuaire.dto.email.EmailDTO;
 import cda.annuaire.model.Email;
+import cda.annuaire.model.User;
+import org.mapstruct.BeforeMapping;
 import org.mapstruct.Mapper;
 
 import java.util.List;

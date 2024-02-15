@@ -19,7 +19,7 @@ public class User {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     /**
      * Prénom de l'utilisateur
@@ -67,6 +67,6 @@ public class User {
     /**
      * Photo de l'utilisateur
      */
-    @OneToOne
+    @OneToOne(mappedBy = "user")
     private Photo photo;
 }

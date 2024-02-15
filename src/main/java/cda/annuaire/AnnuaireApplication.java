@@ -10,4 +10,5 @@ public class AnnuaireApplication {
 		SpringApplication.run(AnnuaireApplication.class, args);
 	}
 
+
 }

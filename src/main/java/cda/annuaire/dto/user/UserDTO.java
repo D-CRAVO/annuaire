@@ -19,7 +19,7 @@ public class UserDTO {
     /**
      * Identifiant de l'utilisateur
      */
-    private long id;
+    private Long id;
 
     /**
      * Prénom de l'utilisateur

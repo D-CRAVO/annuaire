@@ -7,7 +7,7 @@ public class PhotoDTO {
     /**
      * Identifiant de la photo
      */
-    private long id;
+    private Long id;
 
     /**
      * Fichier de la photo

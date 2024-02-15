@@ -22,10 +22,12 @@ public class PhoneController {
      *
      * @return La liste des téléphone de l'utilisateur
      */
+    /*
     @RequestMapping("/{userId}/phones")
     public List<PhoneDTO> getPhoneList(@PathVariable Long userId){
         return phoneService.getPhonesByUserId(userId);
     }
+     */
 
     /**
      * Demande la récupération d'un téléphone au PhoneService
@@ -35,20 +37,24 @@ public class PhoneController {
      *
      * @return Le téléphone
      */
+    /*
     @RequestMapping("/phone/{id}")
     public PhoneDTO getPhoneById(@PathVariable Long id){
         return phoneService.getPhoneById(id);
     }
+     */
 
     /**
      * Demande la récupération de tous les téléphones au PhoneService
      *
      * @return La liste des téléphones
      */
+    /*
     @RequestMapping("/phones")
     public List<PhoneDTO> getAllPhones(){
         return phoneService.getAllPhones();
     }
+     */
 
     /**
      * Demande la suppression d'un téléphone au PhoneService
@@ -66,10 +72,12 @@ public class PhoneController {
      *
      * @param phoneDTO Téléphone à ajouter
      */
+    /*
     @RequestMapping(method = RequestMethod.POST, value = "/phones")
     public void addPhone(@RequestBody PhoneDTO phoneDTO){
         phoneService.addPhone(phoneDTO);
     }
+     */
 
     /**
      * Demande la mise à jour d'un téléphone au PhoneService
@@ -77,8 +85,10 @@ public class PhoneController {
      *
      * @param phoneDTO Téléphone à modifier
      */
+    /*
     @RequestMapping(method = RequestMethod.PUT, value = "/phone")
     public void updatePhone(@RequestBody PhoneDTO phoneDTO){
         phoneService.updatePhone(phoneDTO);
     }
+     */
 }

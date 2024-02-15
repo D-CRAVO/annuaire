@@ -16,7 +16,7 @@ public class EmailDTO {
     /**
      * Identifiant de l'email
      */
-    private long id;
+    private Long id;
 
     /**
      * Addresse de l'email

@@ -17,7 +17,7 @@ public class Photo {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     /**
      * Fichier de l'image
@@ -25,10 +25,4 @@ public class Photo {
     @Column(columnDefinition = "BYTEA", nullable = false)
     private byte[] file;
 
-    /**
-     * Utilisateur auquel la photo est liée
-     */
-    @JoinColumn(columnDefinition = "BIGINT")
-    @OneToOne
-    private User user;
 }

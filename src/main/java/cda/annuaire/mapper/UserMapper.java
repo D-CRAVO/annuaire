@@ -2,10 +2,15 @@ package cda.annuaire.mapper;
 
 import cda.annuaire.dto.user.UserDTO;
 import cda.annuaire.model.User;
+import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
+
 import java.util.List;
 
-@Mapper(uses = {EmailMapper.class, PhoneMapper.class})
+import static cda.annuaire.common.ListUtils.safe;
+
+@Mapper(uses = {EmailMapper.class, PhoneMapper.class, PhotoMapper.class})
 public interface UserMapper {
 
     /**
@@ -39,4 +44,13 @@ public interface UserMapper {
      * @return Le User
      */
     List<User> update(List<UserDTO> userDTOS);
+
+    @AfterMapping
+    default void afterUpdate(UserDTO dto, @MappingTarget User user){
+        safe(user.getPhones())
+              .forEach(phone -> phone.setUser(user));
+        safe(user.getEmails())
+              .forEach(email -> email.setUser(user));
+
+    }
 }

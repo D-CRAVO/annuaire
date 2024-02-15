@@ -2,13 +2,11 @@ package cda.annuaire.service;
 
 import cda.annuaire.dto.user.UserDTO;
 import cda.annuaire.mapper.UserMapper;
-import cda.annuaire.model.User;
 import cda.annuaire.repository.UserRepository;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -49,6 +47,7 @@ public class UserService {
      * @param userDTO Utilisateur à ajouter
      */
     public void addUser(UserDTO userDTO){
+
         userRepository.save(userMapper.update(userDTO));
     }
 

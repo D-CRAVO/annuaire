@@ -16,7 +16,7 @@ public class PhoneDTO {
     /**
      * Identifiant du téléphone
      */
-    private long id;
+    private Long id;
 
     /**
      * Numéro de téléphone
