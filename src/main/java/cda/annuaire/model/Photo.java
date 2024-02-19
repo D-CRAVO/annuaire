@@ -23,6 +23,8 @@ public class Photo {
      * Fichier de l'image
      */
     @Column(columnDefinition = "BYTEA", nullable = false)
-    private byte[] file;
+    private String file;
 
+    @OneToOne
+    User user;
 }
