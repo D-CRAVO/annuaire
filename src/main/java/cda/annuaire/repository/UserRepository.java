@@ -20,5 +20,4 @@ public interface UserRepository extends ListCrudRepository<User, Long> {
      * @return La liste des utilisateurs
      */
     List<User> findByFirstnameContainsOrLastnameContains(String firstname, String lastname);
-
 }
