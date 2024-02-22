@@ -1,8 +1,6 @@
 package cda.annuaire.repository;
 
-import cda.annuaire.dto.user.UserDTO;
 import cda.annuaire.model.User;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.stereotype.Repository;
 
