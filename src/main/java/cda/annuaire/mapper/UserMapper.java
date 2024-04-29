@@ -12,7 +12,6 @@ import static cda.annuaire.common.ListUtils.safe;
 
 @Mapper(uses = {EmailMapper.class, PhoneMapper.class, PhotoMapper.class})
 public interface UserMapper {
-
     /**
      * Convertit le User en UserDTO
      *
@@ -20,7 +19,6 @@ public interface UserMapper {
      * @return Le UserDTO
      */
     UserDTO map(User user);
-
     /**
      * Convertit la liste de User en liste de UserDTO
      *
@@ -28,7 +26,6 @@ public interface UserMapper {
      * @return La liste de UserDTO
      */
     List<UserDTO> map(List<User> users);
-
     /**
      * Convertit le UserDTO en User
      *
@@ -36,7 +33,6 @@ public interface UserMapper {
      * @return Le User
      */
     User update(UserDTO userDTO);
-
     /**
      * Convertit un UserDTO en User
      *
@@ -44,13 +40,11 @@ public interface UserMapper {
      * @return Le User
      */
     List<User> update(List<UserDTO> userDTOS);
-
     @AfterMapping
     default void afterUpdate(UserDTO dto, @MappingTarget User user){
         safe(user.getPhones())
               .forEach(phone -> phone.setUser(user));
         safe(user.getEmails())
               .forEach(email -> email.setUser(user));
-
     }
 }

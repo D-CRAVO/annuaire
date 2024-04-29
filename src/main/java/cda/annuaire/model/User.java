@@ -20,50 +20,42 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     /**
      * Prénom de l'utilisateur
      */
     @Column(columnDefinition = "TEXT")
     private String firstname;
-
     /**
      * Nom de famille de l'utilisateur
      */
     @Column(columnDefinition = "TEXT", nullable = false)
     private String lastname;
-
     /**
      * Adresse de l'utilisateur
      */
     @Column(columnDefinition = "TEXT")
     private String address;
-
     /**
      * Code postal de l'utilisateur
      */
     @Column(columnDefinition = "TEXT")
     private String zipCode;
-
     /**
      * Ville de l'utilisateur
      *
      */
     @Column(columnDefinition = "TEXT")
     private String city;
-
     /**
      * Liste des téléphones associés à l'utilisateur
      */
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Phone> phones;
-
     /**
      * Liste des emails associés à l'utilisateur
      */
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Email> emails;
-
     /**
      * Photo de l'utilisateur
      */

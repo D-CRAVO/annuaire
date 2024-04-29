@@ -15,47 +15,38 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 public class UserDTO {
-
     /**
      * Identifiant de l'utilisateur
      */
     private Long id;
-
     /**
      * Prénom de l'utilisateur
      */
     private String firstname;
-
     /**
      * Nom de l'utilisateur
      */
     private String lastname;
-
     /**
      * Adresse de l'utilisateur
      */
     private String address;
-
     /**
      * Code postal de l'utilisateur
      */
     private String zipCode;
-
     /**
      * Ville de l'utilisateur
      */
     private String city;
-
     /**
      * Liste des téléphones de l'utilisateur
      */
     private List<PhoneDTO> phones;
-
     /**
      * Liste des emails de l'utilisateur
      */
     private List<EmailDTO> emails;
-
     /**
      * Photo de l'utilisateur
      */

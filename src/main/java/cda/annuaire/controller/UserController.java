@@ -12,10 +12,8 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RestController
 public class UserController {
-
     @Autowired
     private UserService userService;
-
     /**
      * Demande la récupération de tous les utilisateurs à l'UserService
      *
@@ -25,7 +23,6 @@ public class UserController {
     public List<UserDTO> getUsers(){
         return userService.getUsers();
     }
-
     /**
      * Demande la récupération d'un utilisateur à l'UserService
      * d'après son identifiant
@@ -38,7 +35,6 @@ public class UserController {
     public UserDTO getUser(@PathVariable long id){
         return userService.getUser(id);
     }
-
     /**
      * Demande la suppression d'un utilisateur à l'UserService
      * d'après son identifiant
@@ -49,7 +45,6 @@ public class UserController {
     public void deleteUser(@PathVariable long id){
         userService.deleteUser(id);
     }
-
     /**
      * Demande l'ajout d'un utilisateur à l'UserService
      *
@@ -59,7 +54,6 @@ public class UserController {
     public void addUser(@RequestBody UserDTO userDTO){
         userService.addUser(userDTO);
     }
-
     /**
      * Demande la mise à jour d'un utilisateur à l'UserService
      * d'après son identifiant
@@ -70,7 +64,6 @@ public class UserController {
     public void updateUser(@RequestBody UserDTO userDTO){
         userService.updateUser(userDTO);
     }
-
     /**
      * Demande la récupération d'une liste d'utilisateurs auprès de l'UserService
      * d'après un texte de recherche
